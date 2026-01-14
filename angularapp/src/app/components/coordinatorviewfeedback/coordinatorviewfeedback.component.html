@@ -1,0 +1,95 @@
+<div class="container text-center">
+  <h1 class="mb-3" style="padding: 10px; font-size: x-large;">Feedbacks Received</h1>
+  <hr class="mx-auto w-50 border-2 border-dark mb-4">
+
+  <!-- Filter dropdown -->
+  <div class="mb-4">
+    <label for="category" class="form-label fw-bold me-2">Filter by Category:</label>
+    <select id="category" class="form-select d-inline-block w-auto" [(ngModel)]="filterCategory">
+      <option value="">All Categories</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
+</div>
+
+<!-- Feedback Table -->
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>S.NO</th>
+        <th>USER NAME</th>
+        <th>FEEDBACK</th>
+        <th>POSTED DATE</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="(feedbacks | filterByCategory:filterCategory).length > 0; else noFeedback">
+        <tr *ngFor="let feedback of feedbacks | filterByCategory:filterCategory; let i = index; trackBy: trackByFeedbackId">
+          <td>{{ feedback_index + i }}</td>
+          <td>
+            <ng-container *ngIf="feedback.userId">
+              
+                {{getUsername(feedback.userId)}}
+            </ng-container>
+          </td>
+          <!-- <td *ngFor="let user of users">{{ user.userId == feedback.userId ? user.username:'' }}</td> -->
+          <td>{{ feedback.feedbackText }}</td>
+          <td>{{ feedback.date | date }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary me-2" (click)="showUserDetails(feedback.userId)" data-bs-toggle="modal" data-bs-target="#userModal">
+              Show Profile
+            </button>
+            <button class="btn btn-sm btn-info" (click)="viewTrainerDetails(feedback.trainerId)" data-bs-toggle="modal" data-bs-target="#trainerModal">
+              View Trainer Info
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+
+  <mat-paginator [length]="totalElements" [pageSize]="pageSize" [pageSizeOptions]="[10,20,50]" (page)="onPageChange($event)" ></mat-paginator>
+
+  <!-- No Feedback Message -->
+  <ng-template #noFeedback>
+    <tr>
+      <td colspan="5" class="text-center text-danger">No feedbacks found for this category</td>
+    </tr>
+  </ng-template>
+</div>
+
+<!-- Trainer Modal -->
+<div class="modal fade" id="trainerModal" tabindex="-1" aria-labelledby="trainerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="trainerModalLabel" style="font-size: x-large;">Trainer Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Trainer Name:</strong> {{ trainer.name }}</p>
+        <p><strong>Email:</strong> {{ trainer.email }}</p>
+        <p><strong>Phone:</strong> {{ trainer.phone }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- User Modal -->
+<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userModalLabel" style="font-size: x-large;">User Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeUserDetails()"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Email:</strong> {{ selectedUser?.email }}</p>
+        <p><strong>User Name:</strong> {{ selectedUser?.username }}</p>
+        <p><strong>Mobile Number:</strong> {{ selectedUser?.mobileNumber }}</p>
+      </div>
+    </div>
+  </div>
+</div>

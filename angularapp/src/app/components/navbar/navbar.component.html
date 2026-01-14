@@ -1,0 +1,154 @@
+<nav *ngIf="!isLoggedin" class="navbar navbar-expand-lg" style="background: linear-gradient(to right, #007bff, #8b4513);">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand text-white fw-bold" routerLink="/">TrainerHub</a>
+
+    <!-- Toggler Button for Mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#guestNavbar"
+      aria-controls="guestNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Content -->
+    <div class="collapse navbar-collapse" id="guestNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/">Home</a>
+        </li>
+        <li>
+        <a class="nav-link text-white" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/signup">SignUp</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/contactus">Contact Us</a>
+        </li>
+      </ul>
+      <!-- Dark Mode Toggle -->
+
+    </div>
+  </div>
+</nav>
+
+<!-- --------------------------------------------------- -->
+
+
+<nav *ngIf="isLoggedin && role === 'Manager'" class="navbar navbar-expand-lg" style="background: linear-gradient(to right, #007bff, #8b4513);">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand text-white fw-bold" routerLink="/">TrainerHub</a>
+
+    <!-- Toggler Button for Mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#managerNavbar"
+      aria-controls="managerNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Content -->
+    <div class="collapse navbar-collapse" id="managerNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/">Home</a>
+        </li>
+
+        <!-- Requirements Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Requirements
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/add-requirement">Add Requirement</a></li>
+            <li><a class="dropdown-item" routerLink="/manager/view-requirements">View Requirements</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/selected-trainers">Selected Trainers</a>
+        </li>
+
+        <!-- Feedbacks Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Feedbacks
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/my-feedbacks">My Feedbacks</a></li>
+          </ul>
+        </li>
+        <li>
+    <button mat-icon-button matTooltip="{{ currentUsername }}" matTooltipPosition="below">
+    <img src="assets/avatar.svg" alt="Profile" class="profile-icon" width="50px" height="50px" style="margin-top: -10px;"/>
+    </button>
+        </li>
+
+          <!-- <li>
+          <img src="assets/avatar.svg" width="40px" height="40px"/>
+        </li> -->
+      </ul>
+
+      <!-- Role Button and Logout -->
+      <div class="d-flex align-items-center ms-lg-3 mt-3 mt-lg-0">
+        <!-- <button class="btn btn-outline-light me-2" type="button">Manager/{{currentUsername}}</button> -->
+        <button class="btn btn-danger" type="button" (click)="logOut()">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+<nav *ngIf="isLoggedin && role === 'Coordinator'" class="navbar navbar-expand-lg" style="background: linear-gradient(to right, #007bff, #8b4513);">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand text-white fw-bold" routerLink="/">TrainerHub</a>
+
+    <!-- Toggler Button for Mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#coordinatorNavbar"
+      aria-controls="coordinatorNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Content -->
+    <div class="collapse navbar-collapse" id="coordinatorNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/">Home</a>
+        </li>
+
+        <!-- Trainers Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Trainers
+          </a>
+           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/add-trainer">Add Trainer</a></li>
+            <li><a class="dropdown-item" routerLink="/view-trainer">View Trainers</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/coordinator/view-requirements">Requirements</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/view-feedback">Feedbacks</a>
+        </li>
+         <li>
+    <button mat-icon-button matTooltip="{{ currentUsername }}" matTooltipPosition="below">
+    <img src="assets/avatarco.svg" alt="Profile" class="profile-icon" width="50px"  height="40px" style="margin-top: -5px;"/>
+    </button>
+        </li>
+
+         <!-- <li class="nav-item">
+          <img  src="assets/femaleavatar.svg" width="50px" height="40px" style="margin-top: -5px;"  />
+        </li> -->
+      </ul>
+
+      <!-- Role Button and Logout -->
+      <div class="d-flex align-items-center ms-lg-3 mt-3 mt-lg-0">
+        <!-- <button class="btn btn-outline-light me-2" type="button">Coordinator/{{currentUsername}}</button> -->
+        <button class="btn btn-danger" type="button" (click)="logOut()">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,68 @@
+<!-- Custom Styles -->
+<style>
+  .hero-section {
+    background-image: url('assets/home.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 100vh;
+    color: white;
+  }
+
+  .overlay-box {
+    background-color: rgba(255, 255, 255, 0.5);/* Transparent white */
+    backdrop-filter: blur(5px); /* Glassmorphism effect */
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    max-width: 800px;
+    margin-left: -500px;
+    /* margin: auto; */
+  }
+
+  .hero-title {
+    font-family: 'Montserrat', Roboto, "Helvetica Neue", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: black;
+  }
+
+  .hero-subtitle {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.25rem;
+    color: black;
+  }
+
+  .section-heading {
+    font-size: xx-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    color: black;
+  }
+
+  .section-text {
+    padding: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    color: black;
+  }
+</style>
+
+<!-- Hero Section -->
+<div class="hero-section d-flex justify-content-center align-items-center text-center px-3">
+  <div class="overlay-box text-center">
+    <h1 class="hero-title">TrainerHub</h1>
+    <p class="hero-subtitle">Your ultimate solution for managing trainees and training requirements.</p>
+
+    <hr class="my-4 text-light">
+
+    <h5 class="section-heading">Welcome to TrainerHub</h5>
+    <p class="section-text">
+      Streamline your training needs with TrainerHub. We offer a comprehensive platform for managing trainees,
+      tracking requirements, and ensuring efficient execution of training programs.
+    </p>
+  </div>
+</div>
+
+<!-- Contact Section -->
+<app-contact-us></app-contact-us>

@@ -1,0 +1,86 @@
+<div class="container mt-5" *ngIf="trainer">
+  <div class="card mb-4">
+    <div class="card-header text-center fw" style="font-size: x-large;">
+      Trainer Details
+    </div>
+    <div class="card-body d-flex justify-content-between flex-wrap">
+
+      <!-- Trainer Info -->
+      <div class="card mb-3 shadow-sm" style="width: 48%;">
+        <div class="card-body" style="font-size: medium;">
+          <h5 class="card-title text-primary" style="font-size: large;">{{ trainer.name }}</h5>
+          <p><strong>Email:</strong> {{ trainer.email }}</p>
+          <p><strong>Phone:</strong> {{ trainer.phone }}</p>
+          <p><strong>Expertise:</strong> {{ trainer.expertise }}</p>
+          <p><strong>Experience:</strong> {{ trainer.experience }}</p>
+          <p><strong>Certification:</strong> {{ trainer.certification }}</p>
+          <p><strong>Joining Date:</strong> {{ trainer.joiningDate | date }}</p>
+          <p><strong>Status:</strong> {{ trainer.status }}</p>
+
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <button class="btn btn-outline-primary" (click)="viewResume(trainer)">View Resume</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Requirement Info -->
+      <div class="card mb-3 shadow-sm" style="width: 48%;">
+        <div class="card-body" style="font-size: medium;"> 
+          <!-- <h5 class="card-title text-primary" style="font-size: large;">{{selectedRequirement?.title}}</h5> -->
+          <h5 class="card-title text-primary" style="font-size: large;">Requirement Details</h5>
+          <p><strong>Title:</strong> {{ selectedRequirement?.title }}</p>
+          <p><strong>Description:</strong> {{ selectedRequirement?.description }}</p>
+          <p><strong>Department:</strong> {{ selectedRequirement?.department }}</p>
+          <p><strong>Posted Date:</strong> {{ selectedRequirement?.postedDate | date }}</p>
+          <p><strong>Duration:</strong> {{ selectedRequirement?.duration }}</p>
+          <p><strong>Location:</strong> {{ selectedRequirement?.location}}</p>
+          <p><strong>Skill level:</strong> {{ selectedRequirement?.skillLevel }}</p>
+          <p><strong>Budget:</strong> {{ selectedRequirement?.budget }}</p>
+          <p><strong>Priority:</strong> {{ selectedRequirement?.priority }}</p>
+          <p><strong>Status:</strong> {{ selectedRequirement?.status }}</p>
+          
+
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <button class="btn btn-success" [disabled]="selectedRequirement?.status=='Closed'" (click)="confirmAction('accept')">Accept Trainer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-danger" (click)="confirmAction('reject')">Reject Trainer</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Resume Modal -->
+  <div class="modal fade show" tabindex="-1" [ngClass]="{ 'd-block': showResumeModal }" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Resume Preview</h5>
+         <button class="btn-close" (click)="closeResumeModal()">.</button>
+        </div>
+        <div class="modal-body">
+          <iframe *ngIf="resumeUrl" [src]="resumeUrl" width="100%" height="500px"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <!-- <div class="modal fade show" tabindex="-1" [ngClass]="{ 'd-block': showConfirmModal }" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Action</h5>
+          <button type="button" class="btn-close" (click)="cancelAction()">.</button>
+        </div>
+        <div class="modal-body">
+          <p> Are you sure you want to <strong>{{ actionType }}</strong> this trainer? </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" (click)="proceedAction()">OK</button>
+          <button class="btn btn-secondary" (click)="cancelAction()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

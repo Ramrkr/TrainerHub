@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Requirements</h2>
+
+  <form [formGroup]="filterForm" class="row mb-3">
+    <div class="col-md-6">
+      <input type="text" class="form-control" placeholder="Search by Requirement Title" formControlName="searchTitle">
+    </div>
+    <div class="col-md-6">
+      <select class="form-select" formControlName="filterStatus">
+        <option value="">All Status</option>
+        <option value="Open">Open</option>
+        <option value="Closed">Closed</option>
+      </select>
+    </div>
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-primary">
+        <tr>
+          <th>S.No</th>
+          <th>Title</th>
+          <th>Department</th>
+          <th>Duration</th>
+          <th>Mode</th>
+          <th>Status</th>
+          <th>Trainer Assigned</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody *ngIf="filteredRequirements.length > 0; else noRecords">
+        <tr *ngFor="let requirement of filteredRequirements; let i = index">
+          <td>{{ requirement_index+i }}</td>
+
+          <td>{{ requirement.title }}</td>
+          <td>{{ requirement.department }}</td>
+          <td>{{ requirement.duration }}</td>
+          <td>{{ requirement.mode }}</td>
+          <td>{{ requirement.status }}</td>
+          <td>{{ requirement.trainerId ? 'Assigned' : 'Not Assigned' }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary me-1" (click)="editRequirement(requirement)">Edit</button>
+            <button class="btn btn-sm btn-danger me-1" (click)="deleteRequirement(requirement)">Delete</button>
+            <button class="btn btn-sm btn-info" *ngIf="requirement.trainerId" (click)="viewTrainer(requirement.requirementId!, requirement.trainerId!)">View Trainer</button>
+          </td>
+        </tr>
+      </tbody>
+
+      <ng-template #noRecords>
+        <tr>
+          <td colspan="8" class="text-center text-muted py-3">Oops! No records found.</td>
+        </tr>
+      </ng-template>
+    </table>
+    <mat-paginator [length]="totalElements" [pageSize]="pageSize" [pageSizeOptions]="[10,20,50]" (page)="onPageChange($event)" ></mat-paginator>
+  </div>
+</div>

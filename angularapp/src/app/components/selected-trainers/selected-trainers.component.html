@@ -1,0 +1,27 @@
+<div class="container mt-4">
+
+    <div *ngIf=" trainersWithClosedRequirements.length === 0" class="alert alert-warning text-center">
+    <h4>Oops! No data found.</h4>
+  </div>
+
+    <div *ngIf=" trainersWithClosedRequirements.length > 0" class="row">
+    <div *ngFor="let trainer of trainersWithClosedRequirements" class="col-md-6 col-lg-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title">{{ trainer.name }}</h3>
+          <p class="card-text"><strong>Email:</strong> {{ trainer.email }}</p>
+          <p class="card-text"><strong>Phone:</strong> {{ trainer.phone }}</p>
+          <p class="card-text"><strong>Expertise:</strong> {{ trainer.expertise }}</p>
+          <p class="card-text"><strong>Experience:</strong> {{ trainer.experience }}</p>
+          <p class="card-text"><strong>Certification:</strong> {{ trainer.certification }}</p>
+          <p class="card-text"><strong>Closed Requirements:</strong></p>
+          <p class="card-text"><strong>Requirement Title:</strong> {{ trainer.requirementTitle }}</p>
+          <p class="card-text"><strong>Status:</strong> {{ trainer.requirementStatus }}</p>
+        </div>
+        <div class="card-footer text-end">
+          <button class="btn btn-primary" (click)="navigateToFeedback(trainer.id)">Write a Review</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

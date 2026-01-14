@@ -1,0 +1,100 @@
+<div class="container mt-5">
+  <div class="card mx-auto" style="max-width: 600px;">
+    <div class="card-header text-center fw-bold" style="font-size: x-large; padding: 20px;">
+      {{ isEditMode ? 'Edit Trainer' : 'Add New Trainer' }}
+    </div>
+    <div class="card-body">
+      <form [formGroup]="trainerForm" (ngSubmit)="onSubmit()">
+
+        <!-- Name -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" id="name" class="form-control" formControlName="name" placeholder="Enter name">
+          <div *ngIf="trainerForm.get('name')?.touched && trainerForm.get('name')?.invalid" class="text-danger">
+            Name is required.
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" class="form-control" formControlName="email" placeholder="Enter email">
+          <div *ngIf="trainerForm.get('email')?.touched && trainerForm.get('email')?.hasError('required')" class="text-danger">
+            Email is required.
+          </div>
+          <div *ngIf="trainerForm.get('email')?.touched && trainerForm.get('email')?.hasError('email')" class="text-danger">
+            Enter a valid email.
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="text" id="phone" class="form-control" formControlName="phone" placeholder="Enter phone number">
+          <div *ngIf="trainerForm.get('phone')?.touched && trainerForm.get('phone')?.invalid" class="text-danger">
+            Phone number is required.
+          </div>
+        </div>
+
+        <!-- Expertise -->
+        <div class="mb-3">
+          <label for="expertise" class="form-label">Expertise</label>
+          <input type="text" id="expertise" class="form-control" formControlName="expertise" placeholder="Enter expertise">
+          <div *ngIf="trainerForm.get('expertise')?.touched && trainerForm.get('expertise')?.invalid" class="text-danger">
+            Expertise is required.
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="mb-3">
+          <label for="experience" class="form-label">Experience</label>
+          <input type="text" id="experience" class="form-control" formControlName="experience" placeholder="Enter experience">
+          <div *ngIf="trainerForm.get('experience')?.touched && trainerForm.get('experience')?.invalid" class="text-danger">
+            Experience is required.
+          </div>
+        </div>
+
+        <!-- Certification -->
+        <div class="mb-3">
+          <label for="certification" class="form-label">Certification</label>
+          <input type="text" id="certification" class="form-control" formControlName="certification" placeholder="Enter certification">
+          <div *ngIf="trainerForm.get('certification')?.touched && trainerForm.get('certification')?.invalid" class="text-danger">
+            Certification is required.
+          </div>
+        </div>
+
+        <!-- Resume Upload -->
+        <div class="mb-3">
+          <label for="resume" class="form-label">Upload Resume</label>
+          <input type="file" id="resume" class="form-control" (change)="onFileChange($event)" accept=".pdf,.doc,.docx,.jpg">
+          <div *ngIf="imagePreview" class="mt-2">
+            <img *ngIf="imagePreview && imagePreview.toString().startsWith('data:image')" [src]="imagePreview" alt="Preview" class="img-thumbnail" width="100">
+          </div>
+        </div>
+
+        <!-- Joining Date -->
+        <div class="mb-3">
+          <label for="joiningDate" class="form-label">Joining Date</label>
+          <input type="date" id="joiningDate" class="form-control" formControlName="joiningDate">
+          <div *ngIf="trainerForm.get('joiningDate')?.touched && trainerForm.get('joiningDate')?.invalid" class="text-danger">
+            Joining date is required.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-primary">
+            {{ isEditMode ? 'Update Trainer' : 'Add Trainer' }}
+          </button>
+        </div>
+
+        <!-- Back Button -->
+        <div class="d-grid" *ngIf="isEditMode">
+          <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+	

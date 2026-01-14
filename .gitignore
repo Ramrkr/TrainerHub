@@ -1,0 +1,18 @@
+# Angular
+angularapp/node_modules/
+angularapp/dist/
+angularapp/.angular/
+angularapp/.vscode/
+
+# Spring Boot
+springapp/target/
+springapp/.mvn/
+springapp/logs/
+springapp/.vscode/
+
+# General
+*.log
+*.class
+*.iml
+.DS_Store
+.idea/

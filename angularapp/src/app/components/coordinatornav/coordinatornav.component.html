@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg" style="background: linear-gradient(to right, #007bff, #8b4513);">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand text-white fw-bold" href="#">TrainerHub</a>
+
+    <!-- Coordinator Button -->
+    <button class="btn btn-outline-light me-3" type="button">coordinator / Coordinator</button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse justify-content-center">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/">Home</a>
+        </li>
+        <!-- Requirements Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Trainers
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/add-trainer">Add Trainer</a></li>
+            <li><a class="dropdown-item" routerLink="/view-trainer">View Trainers</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/view-requirement">Requirements</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/view-feedback">Feedbacks</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Logout Button -->
+    <button class="btn btn-danger" type="button" (click)="logOut()">Logout</button>
+  </div>
+</nav>

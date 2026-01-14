@@ -1,0 +1,98 @@
+<div class="container-fluid">
+ 
+  <div class="container mt-4">
+    <h3 class="mb-3" style="text-align: center; font-size: x-large;">Available Requirements</h3>
+
+    <input
+      type="text"
+      class="form-control mb-3"
+      placeholder="Search by Requirement Title or Department..."
+      [(ngModel)]="searchTitle"
+    />
+    <table class="table table-bordered table-hover">
+      <thead class="table-primary">
+        <tr>
+          <th>S.NO</th>
+          <th>TITLE</th>
+          <th>DESCRIPTION</th>
+          <th>DEPARTMENT</th>
+          <th>DURATION</th>
+          <th>STATUS</th>
+          <th>TRAINER ASSIGNED</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let requirement of requirements | filterByTitleOrDepartment:searchTitle; let i = index">
+          <td>{{  req_index+i }}</td>
+          <td>{{ requirement.title }}</td>
+          <td>{{ requirement.description }}</td>
+          <td>{{ requirement.department }}</td>
+          <td>{{ requirement.duration }}</td>
+          <td>{{ requirement.status }}</td>
+          <td>
+            <ng-container *ngIf="requirement.trainerId; else notAssigned">
+              <ng-container *ngFor="let trainer of InactiveTrainers">
+                <span *ngIf="trainer.trainerId == requirement.trainerId">
+                  {{ trainer.name }} ({{ trainer.expertise }})
+                </span>
+              </ng-container>
+            </ng-container>
+            <ng-template #notAssigned>
+              <span class="text-muted">Not Assigned</span>
+            </ng-template>
+          </td>
+          <td>
+            <button
+              *ngIf="!requirement.trainerId"
+              class="btn btn-success btn-sm"
+              (click)="openAssignTrainerPopup(requirement)"
+            >
+              Assign Trainer
+            </button>
+            <button *ngIf="requirement.trainerId" class="btn btn-secondary btn-sm" disabled>
+              Trainer Assigned
+            </button>
+          </td>
+        </tr>
+        
+        <tr *ngIf="(requirements | filterByTitleOrDepartment:searchTitle).length === 0">
+          <td colspan="8" style="text-align: center;" class="text-muted">Oops! No records found</td>
+        </tr>
+      </tbody>
+      <ng-template #noData>
+  <div class="alert alert-warning">No data found.</div>
+</ng-template>
+    </table>
+    <mat-paginator [length]="totalElements" [pageSize]="pageSize" [pageSizeOptions]="[10,20,50]" (page)="onPageChange($event)" ></mat-paginator>
+  </div>
+</div>
+
+
+
+
+<div *ngIf="showAssignTrainerPopup" class="popup-overlay">
+  <div class="popup-content">
+    <h4 class="mb-3">Assign Trainer</h4>
+    <input
+      type="text"
+      class="form-control mb-3"
+      placeholder="Search by Name or Expertise"
+      [(ngModel)]="trainerSearch"
+      
+    />
+    <ul class="list-group mb-3">
+      <li
+        class="list-group-item"
+        *ngFor="let trainer of activeTrainers | filterByNameOrExpertise:trainerSearch"
+        (click)="selectTrainer(trainer)"
+        style="cursor: pointer;"
+      >
+        <div><strong>{{ trainer.name }}</strong> ({{ trainer.expertise }})</div>
+        <div>Email: {{ trainer.email }}</div>
+        <div>Experience: {{ trainer.experience }}</div>
+      </li>
+    </ul>
+    <button class="btn btn-outline-danger" (click)="closeAssignTrainerPopup()">Close</button>
+  </div>
+</div>

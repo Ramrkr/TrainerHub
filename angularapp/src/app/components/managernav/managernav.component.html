@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg" style="background: linear-gradient(to right, #007bff, #8b4513);">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand text-white fw-bold" routerLink="/">TrainerHub</a>
+
+    <!-- Role Button -->
+    <button class="btn btn-outline-light me-3" type="button">demo / Manager</button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse justify-content-center">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/">Home</a>
+        </li>
+
+        <!-- Requirements Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Requirements
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/add-requirement">Add Requirement</a></li>
+            <li><a class="dropdown-item" routerLink="/manager/view-requirements">View Requirements</a></li>
+          </ul>
+        </li>
+
+         <li class="nav-item dropdown">
+          <a class="nav-link text-white" routerLink="/selected-trainers" role="button" aria-expanded="false">
+            Selected Trainers
+          </a>
+        </li>
+
+        <!-- Feedbacks Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Feedbacks
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/my-feedbacks">My Feedbacks</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Logout Button -->
+    <button class="btn btn-danger" type="button" (click)="logOut()">Logout</button>
+  </div>
+</nav>

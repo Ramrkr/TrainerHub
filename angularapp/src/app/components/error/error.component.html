@@ -1,0 +1,26 @@
+<div class="container text-center py-5">
+  <div class="d-flex flex-column align-items-center justify-content-center">
+    <!-- Animated SVG or Icon -->
+    <div class="mb-4">
+      <img src="assets/pageeaten.svg" alt="Error Icon" class="img-fluid" style="max-width: 150px;">
+    </div>
+
+    <!-- Error Message -->
+    <h2 class="text-danger fw-bold mb-3">
+      Oops! Something went wrong.
+    </h2>
+    <p class="text-muted mb-4">
+      We couldn't load the page you were looking for. It might be a temporary issue or the page doesn't exist.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="d-flex gap-3">
+      <button class="btn btn-outline-primary" (click)="retry()" data-bs-toggle="tooltip" title="Try reloading the page">
+        🔄 Retry
+      </button>
+      <a routerLink="/" class="btn btn-outline-dark" data-bs-toggle="tooltip" title="Go back to homepage">
+        🏠 Home
+      </a>
+    </div>
+  </div>
+</div>

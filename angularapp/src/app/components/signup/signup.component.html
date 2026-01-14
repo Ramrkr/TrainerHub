@@ -1,0 +1,55 @@
+<div class="container-fluid min-vh-100 d-flex flex-wrap p-0">
+  <!-- Right Panel (Background Image) -->
+  <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center text-white order-md-2"
+       style="background-image: url('assets/Signupbro.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  </div>
+
+  <!-- Left Panel (Form) -->
+  <div class="col-md-6 d-flex justify-content-center align-items-center bg-light order-md-1">
+    <form class="signup-form-container p-3 border rounded bg-white shadow w-100"
+          style="max-width: 480px; margin-top: 40px; margin-bottom: 40px;"
+          [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <h2 class="text-center mb-4">Sign Up</h2>
+
+      <div class="mb-2">
+        <label for="username" class="form-label">Username</label>
+        <input formControlName="username" type="text" id="username" class="form-control" placeholder="Enter your name">
+      </div>
+
+      <div class="mb-2">
+        <label for="email" class="form-label">Email</label>
+        <input formControlName="email" type="email" id="email" class="form-control" placeholder="Enter your email">
+      </div>
+
+      <div class="mb-2">
+        <label for="mobile" class="form-label">Mobile</label>
+        <input formControlName="mobileNumber" type="text" id="mobile" class="form-control" placeholder="Enter your mobile number">
+      </div>
+
+      <div class="mb-2">
+        <label for="password" class="form-label">Password</label>
+        <input formControlName="password" type="password" id="password" class="form-control" placeholder="Create a password">
+      </div>
+
+      <div class="mb-2">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input formControlName="confirmPassword" type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password">
+      </div>
+
+      <div class="mb-3">
+        <label for="role" class="form-label">Select Role</label>
+        <select formControlName="userRole" id="role" class="form-select">
+          <option value="" disabled selected>Select your role</option>
+          <option value="Manager">Manager</option>
+          <option value="Coordinator">Co-ordinator</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Signup</button>
+
+      <p class="text-center mt-2 mb-0">
+        Already have an account? <a routerLink="/login">Login</a>
+      </p>
+    </form>
+  </div>
+</div>

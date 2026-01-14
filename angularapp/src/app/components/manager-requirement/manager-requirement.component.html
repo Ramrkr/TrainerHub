@@ -1,0 +1,114 @@
+<div class="container mt-5">
+  <div class="card mx-auto" style="max-width: 600px; background-color: rgba(255, 255, 255, 0.8);">
+    <div class="card-header text-center fw-bold" style="font-size: x-large; padding: 20px;">
+      {{ isEditMode ? 'Edit Requirement' : 'Create New Requirement' }}
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+
+        <!-- Title -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Title*</label>
+          <input type="text" id="title" class="form-control" formControlName="title" required>
+          <div *ngIf="form.controls['title'].invalid && form.controls['title'].touched" class="text-danger mt-1">
+            *Title is required
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description*</label>
+          <textarea id="description" class="form-control" formControlName="description" rows="3" required></textarea>
+          <div *ngIf="form.controls['description'].invalid && form.controls['description'].touched" class="text-danger mt-1">
+            *Description is required
+          </div>
+        </div>
+
+        <!-- Department -->
+        <div class="mb-3">
+          <label for="department" class="form-label">Department*</label>
+          <input type="text" id="department" class="form-control" formControlName="department" required>
+          <div *ngIf="form.controls['department'].invalid && form.controls['department'].touched" class="text-danger mt-1">
+            *Department is required
+          </div>
+        </div>
+
+        <!-- Duration -->
+        <div class="mb-3">
+          <label for="duration" class="form-label">Duration*</label>
+          <input type="text" id="duration" class="form-control" formControlName="duration" required>
+          <div *ngIf="form.controls['duration'].invalid && form.controls['duration'].touched" class="text-danger mt-1">
+            *Duration is required
+          </div>
+        </div>
+
+        <!-- Mode -->
+        <div class="mb-3">
+          <label for="mode" class="form-label">Mode*</label>
+          <select id="mode" class="form-select" formControlName="mode" required>
+            <option value="" disabled selected>Select mode</option>
+            <option *ngFor="let opt of modes" [value]="opt">{{opt}}</option>
+          </select>
+          <div *ngIf="form.controls['mode'].invalid && form.controls['mode'].touched" class="text-danger mt-1">
+            *Mode is required
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" id="location" class="form-control" formControlName="location">
+        </div>
+
+        <!-- Skill Level -->
+        <div class="mb-3">
+          <label for="skillLevel" class="form-label">Skill Level*</label>
+          <select id="skillLevel" class="form-select" formControlName="skillLevel" required>
+            <option value="" disabled selected>Select Skill Level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+          <div *ngIf="form.controls['skillLevel'].invalid && form.controls['skillLevel'].touched" class="text-danger mt-1">
+            *Skill Level is required
+          </div>
+        </div>
+
+        <!-- Budget -->
+        <div class="mb-3">
+          <label for="budget" class="form-label">Budget</label>
+          <input type="number" id="budget" class="form-control" formControlName="budget">
+        </div>
+
+        <!-- Priority -->
+        <div class="mb-3">
+          <label for="priority" class="form-label">Priority</label>
+          <select id="priority" class="form-select" formControlName="priority">
+            <option value="" disabled selected>Select Priority</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+
+        <!-- Error Message -->
+        <div *ngIf="submitted && form.invalid" class="text-danger mb-3">
+          *Please fill in all required fields correctly.
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-primary">
+            {{ isEditMode ? 'Update Requirement' : 'Add Requirement' }}
+          </button>
+        </div>
+
+        <!-- Back Button -->
+        <div class="d-grid" *ngIf="isEditMode">
+          <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
