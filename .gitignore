@@ -1,16 +1,24 @@
-# Angular
+# -------------------------
+# Angular (frontend)
+# -------------------------
 angularapp/node_modules/
 angularapp/dist/
 angularapp/.angular/
 angularapp/.vscode/
 
-# Spring Boot
+# -------------------------
+# Spring Boot (backend)
+# -------------------------
 springapp/target/
-springapp/.mvn/
 springapp/logs/
 springapp/.vscode/
 
+# ⚠️ Do NOT ignore springapp/.mvn/
+# Keep Maven wrapper files so Docker builds succeed
+
+# -------------------------
 # General
+# -------------------------
 *.log
 *.class
 *.iml
