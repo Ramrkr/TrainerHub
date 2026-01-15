@@ -61,6 +61,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/feedback").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/feedback/user/{userId}").hasRole("Manager")
                         .requestMatchers(HttpMethod.DELETE, "/api/feedback/{feedbackId}").hasRole("Manager")
+                        // Allow CORS preflight requests
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

@@ -1,0 +1,29 @@
+# Render service template - replace placeholder values in Render dashboard
+# For security, do NOT store secrets in this file; add them in Render's Environment settings.
+services:
+  - type: web
+    name: trainerhub-springapp
+    env: docker
+    plan: free
+    region: oregon
+    repo: <your-repo-url>
+    branch: main
+    dockerfilePath: Dockerfile
+    buildCommand: "./mvnw -DskipTests clean package"
+    startCommand: "java -jar target/springapp-0.0.1-SNAPSHOT.jar"
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        value: "jdbc:postgresql://<DB_HOST>:5432/<DB_NAME>"
+      - key: SPRING_DATASOURCE_USERNAME
+        value: "<DB_USER>"
+      - key: SPRING_DATASOURCE_PASSWORD
+        secure: true
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: "update"
+      - key: SPRING_JPA_SHOW_SQL
+        value: "false"
+      - key: SPRING_JPA_JDBC_TIME_ZONE
+        value: "UTC"
+      - key: JAVA_TOOL_OPTIONS
+        value: "-Duser.timezone=Asia/Kolkata"
+    # Use Render's dashboard to set secure values for DB password and other secrets
