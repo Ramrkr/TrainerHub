@@ -2,11 +2,43 @@
 
 TrainerHub is a full-stack training management platform with an Angular frontend and a Spring Boot backend. This repository contains both the `angularapp` (frontend) and `springapp` (backend).
 
+### Landing page
+<img width="3181" height="1664" alt="Screenshot 2026-01-15 181313" src="https://github.com/user-attachments/assets/3e07a930-e1be-4060-a227-d52c3a9a43ac" />
+
 ## Features
 - User authentication and role-based access
 - Trainer and requirement management
 - Feedback and pagination APIs
 - OpenAPI / Swagger UI integration (springdoc)
+
+### Login page
+  <img width="3173" height="1550" alt="Screenshot 2026-01-15 181328" src="https://github.com/user-attachments/assets/bf467349-9d29-4ae4-90f8-5c98fedc29c0" />
+  
+### Sign Up page
+  <img width="3167" height="1559" alt="Screenshot 2026-01-15 181339" src="https://github.com/user-attachments/assets/e5d994d5-7e82-4399-bd96-2c56fcd6479a" />
+
+### Forgot Password 
+  <img width="3177" height="1661" alt="Screenshot 2026-01-15 181352" src="https://github.com/user-attachments/assets/d70dec21-70d4-43b6-a868-da27ce805cf0" />
+
+### view Trainers by Co-ordinator 
+  <img width="3156" height="1155" alt="Screenshot 2026-01-15 182921" src="https://github.com/user-attachments/assets/304fd0e6-29fa-49c7-a661-6a6e83932043" />
+
+### view requirements by Co-Ordinator
+<img width="3151" height="850" alt="Screenshot 2026-01-15 182931" src="https://github.com/user-attachments/assets/93c56f6c-395c-4901-bb87-dce35a695765" />
+
+### view Assigned trainers Details by Manager 
+<img width="3199" height="1451" alt="Screenshot 2026-01-15 182955" src="https://github.com/user-attachments/assets/0360ea93-cfc3-471d-ab3f-484607f4c21b" />
+
+### view Feedbacks 
+<img width="3158" height="903" alt="Screenshot 2026-01-15 183123" src="https://github.com/user-attachments/assets/cc18273c-d41e-40bb-b495-9bc17cc5b6e5" />
+
+
+
+
+
+
+
+
 
 ## Tech Stack
 - Backend: Java 21, Spring Boot, Spring Data JPA, PostgreSQL
@@ -96,4 +128,5 @@ See `API_DOCUMENTATION.md` for more details.
 
 ## Contributing
 See `CONTRIBUTING.md` for contribution guidelines.
+
 
