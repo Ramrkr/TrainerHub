@@ -40,30 +40,30 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable()).cors().and()
                 .authorizeHttpRequests(auth -> auth
-                    //.anyRequest().permitAll())
-                        .requestMatchers("/api/login",
-                                "/api/register","/api/test/login",
-                                "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html")
-                        .permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/requirement").hasRole("Manager")
-                        .requestMatchers(HttpMethod.GET, "/api/requirement/{requirementId}").hasRole("Manager")
-                        .requestMatchers(HttpMethod.GET, "/api/requirement/trainer/{trainerId}").hasRole("Manager")
-                        .requestMatchers(HttpMethod.GET, "/api/requirement").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/api/requirement/{requirementId}").hasAnyRole("Manager","Coordinator")
-                        .requestMatchers(HttpMethod.DELETE, "/api/requirement/{requirementId}").hasRole("Manager")
-                        .requestMatchers(HttpMethod.POST, "/api/trainer").hasRole("Coordinator")
-                        .requestMatchers(HttpMethod.GET, "/api/trainer/{trainerId}").hasAnyRole("Manager","Coordinator")
-                        .requestMatchers(HttpMethod.GET, "/api/trainer").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/api/trainer/{trainerId}").hasRole("Coordinator")
-                        .requestMatchers(HttpMethod.DELETE, "/api/trainer/{trainerId}").hasRole("Coordinator")
-                        .requestMatchers(HttpMethod.POST, "/api/feedback").hasRole("Manager")
-                        .requestMatchers(HttpMethod.GET, "/api/feedback/{feedbackId}").hasAnyRole("Manager","Coordinator")
-                        .requestMatchers(HttpMethod.GET, "/api/feedback").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/feedback/user/{userId}").hasRole("Manager")
-                        .requestMatchers(HttpMethod.DELETE, "/api/feedback/{feedbackId}").hasRole("Manager")
-                        // Allow CORS preflight requests
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .anyRequest().authenticated())
+                    .anyRequest().permitAll())
+                        // .requestMatchers("/api/login",
+                        //         "/api/register","/api/test/login",
+                        //         "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html")
+                        // .permitAll()
+                        // .requestMatchers(HttpMethod.POST, "/api/requirement").hasRole("Manager")
+                        // .requestMatchers(HttpMethod.GET, "/api/requirement/{requirementId}").hasRole("Manager")
+                        // .requestMatchers(HttpMethod.GET, "/api/requirement/trainer/{trainerId}").hasRole("Manager")
+                        // .requestMatchers(HttpMethod.GET, "/api/requirement").permitAll()
+                        // .requestMatchers(HttpMethod.PUT, "/api/requirement/{requirementId}").hasAnyRole("Manager","Coordinator")
+                        // .requestMatchers(HttpMethod.DELETE, "/api/requirement/{requirementId}").hasRole("Manager")
+                        // .requestMatchers(HttpMethod.POST, "/api/trainer").hasRole("Coordinator")
+                        // .requestMatchers(HttpMethod.GET, "/api/trainer/{trainerId}").hasAnyRole("Manager","Coordinator")
+                        // .requestMatchers(HttpMethod.GET, "/api/trainer").permitAll()
+                        // .requestMatchers(HttpMethod.PUT, "/api/trainer/{trainerId}").hasRole("Coordinator")
+                        // .requestMatchers(HttpMethod.DELETE, "/api/trainer/{trainerId}").hasRole("Coordinator")
+                        // .requestMatchers(HttpMethod.POST, "/api/feedback").hasRole("Manager")
+                        // .requestMatchers(HttpMethod.GET, "/api/feedback/{feedbackId}").hasAnyRole("Manager","Coordinator")
+                        // .requestMatchers(HttpMethod.GET, "/api/feedback").permitAll()
+                        // .requestMatchers(HttpMethod.GET, "/api/feedback/user/{userId}").hasRole("Manager")
+                        // .requestMatchers(HttpMethod.DELETE, "/api/feedback/{feedbackId}").hasRole("Manager")
+                        // // Allow CORS preflight requests
+                        // .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        // .anyRequest().authenticated())
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
