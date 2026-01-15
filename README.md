@@ -97,7 +97,3 @@ See `API_DOCUMENTATION.md` for more details.
 ## Contributing
 See `CONTRIBUTING.md` for contribution guidelines.
 
----
-
-## License & Contact
-Add your license here and contact details. If you want, I can add a `LICENSE` file (MIT/Apache/etc.).
