@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Trainer } from '../models/trainer.model';
 import { PaginatedTrainers } from '../models/paginatedTrainers.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class TrainerService {
 
   // public apiUrl:string='http://localhost:3001/trainers';
 
-  public apiUrl:string='http://localhost:8080/api';
+  public apiUrl:string=`${environment.apiUrl}/api`;
 
   constructor(private http:HttpClient) { }
 

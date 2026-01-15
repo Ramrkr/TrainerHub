@@ -4,13 +4,14 @@ import { User } from '../models/user.model';
 import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { Login } from '../models/login.model';
 import { ApiResponse } from '../models/apiResponse.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public apiUrl: string = 'http://localhost:8080/api';
+  public apiUrl: string = `${environment.apiUrl}/api`;
 
   private loggedInUserSubject = new BehaviorSubject<any>(null);
   loggedInUser$ = this.loggedInUserSubject.asObservable();

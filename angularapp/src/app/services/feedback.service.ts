@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Feedback } from '../models/feedback.model';
 import { Observable } from 'rxjs';
 import { paginatedFeedbacks } from '../models/paginatedFeedbacks.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class FeedbackService {
 
   // public apiUrl:string='http://localhost:3001/feedback';
 
-    public apiUrl:string='http://localhost:8080/api';
+    public apiUrl:string=`${environment.apiUrl}/api`;
 
 
 

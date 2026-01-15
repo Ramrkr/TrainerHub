@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Requirement } from '../models/requirement.model';
 import { PaginatedRequirements } from '../models/paginatedRequirements.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequirementService {
 
-  public apiUrl:string='http://localhost:8080/api';
+  public apiUrl:string=`${environment.apiUrl}/api`;
 
   constructor(private http:HttpClient) { }
 
