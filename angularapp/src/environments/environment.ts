@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'   // backend running locally
+  apiUrl: 'https://trainerhub-backend.onrender.com'   // backend running locally
 };
