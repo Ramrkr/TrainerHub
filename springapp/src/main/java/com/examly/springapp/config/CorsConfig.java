@@ -12,7 +12,8 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
 public void addCorsMappings(CorsRegistry registry) {
     registry.addMapping("/**")
-    .allowedOriginPatterns("*")
+    //.allowedOriginPatterns("*")
+    .allowedOrigins("https://mytrainerhub.netlify.app","http://localhost:8081")
         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
         .allowedHeaders("*")
         .allowCredentials(true);
